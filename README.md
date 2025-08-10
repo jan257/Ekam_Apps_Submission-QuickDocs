@@ -1,12 +1,12 @@
 # Ekam Apps Assessment: QuickDocs
 
 ## Overview
-This is a web-based application developed as part of the Ekam Apps Assessment. It allows users to register, log in, upload documents, and perform natural language queries on the stored data.
+This is a web-based application developed as part of the Ekam Apps Assessment. It allows to register users, sumbit documents, track progess of processes and perform natural language queries on the stored data.
 
 ## Features
 - User registration and authentication
 - Document upload and management
-- Dashboard view for managing content
+- Dashboard view for managing processes
 - Natural language query interface with error handling
 - Responsive front-end with HTML, CSS, and JavaScript
 

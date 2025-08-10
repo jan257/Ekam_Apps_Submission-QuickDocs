@@ -1,0 +1,51 @@
+12 example queries the rule-based system should handle correctly
+Q ~ Query
+R ~ Result
+
+1. Show all customers
+Q:Show all customers
+R:Matches your "show/list/get customers" pattern.
+
+2. List pending processes
+Q:List pending processes
+R:Matches your "pending processes" pattern.
+
+3. How many documents has [customer] submitted?
+Q:How many documents has Ramesh Sharma submitted?
+R:Matches your "how many documents has X submitted" pattern.
+
+4. Which process has the most documents?
+Q:Which process has the most documents?
+R:Matches "process with most documents" pattern.
+
+5. Customers assigned to a specific process
+Q:Which customers are assigned to KYC Process?
+R:Matches "customers assigned to process name" pattern.
+
+6. Alternate phrasing for customer-process assignment
+Q:Which customers are assigned to Loan Process?
+R:Matches "show customers assigned to X" pattern.
+
+7. Shorter version of customer doc count
+Q:Documents Ramesh Sharma submitted
+R:Matches short pattern for doc count.
+
+8. Customers who need to provide a document
+Q:Which customers are assigned to KYC Process?
+R:Matches "should provide / need to submit / missing" doc pattern.
+
+9. Who has not submitted a specific proof
+Q:List customers missing PAN card
+R:Also matches the "missing" document type rule.
+
+10. Alternate doc requirement phrasing
+Q:Who needs to submit PAN card?
+R:Same document-check logic as above.
+
+11. To know completed processes
+Q:List all completed processes
+R:Matches your "completed processes" pattern.
+
+12. To check for in-progress processes
+Q:Show in-progress processes
+R:Matches your "in-progress processes" pattern.

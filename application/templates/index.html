@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickDocs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+   <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo"> 
+            <a href="/" style="text-decoration: none; color: inherit;">QuickDocs</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/submit-document">Submit Document</a></li>
+        </ul>
+    </nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to QuickDocs</h1>
+        <p>Manage workflows, submit documents, and get instant analytics with AI-powered insights.</p>
+
+        <!-- NL Query Box -->
+        <form action="/query" method="POST" class="query-form">
+            <input type="text" name="nl_query" placeholder="Ask QuickDocs..." required>
+            <button type="submit">Go</button>
+        </form>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h3>AI-Powered Query</h3>
+        <p>Ask questions in plain English and get instant, accurate results from your document data.</p>
+    </div>
+    <div class="feature">
+        <h3>Document Management</h3>
+        <p>Easily register, upload, and track documents for different processes.</p>
+    </div>
+    <div class="feature">
+        <h3>Live Dashboard</h3>
+        <p>Monitor completion percentages, pending tasks, and more in real-time.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="
+    background: linear-gradient(to right, #004aad, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-top: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+">
+    <p style="margin: 0;">
+        Made with 💻 & ☕ by <strong>Jahnavi</strong> — 
+        <em>May your queries be fast and your bugs be shallow</em>
+    </p>
+</footer>
+
+
+
+</body>
+</html>
+
+

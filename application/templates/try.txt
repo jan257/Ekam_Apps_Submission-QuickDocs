@@ -1,0 +1,325 @@
+{% if results %}
+<h3>Results:</h3>
+<table>
+    <tr>
+        {% for col in results[0].keys() %}
+        <th>{{ col }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in results %}
+    <tr>
+        {% for col in row.values() %}
+        <td>{{ col }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% elif results is not none and not results %}
+<p>No results found.</p>
+{% endif %}
+
+
+
+
+index.html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickDocs - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo">QuickDocs</div>
+        <ul class="nav-links">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/submit-document">Submit Document</a></li>
+            <li><a href="/query">Query Interface</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to QuickDocs</h1>
+            <p>Manage workflows, submit documents, and get instant analytics with AI-powered insights.</p>
+            <!-- Quick Query Box inside hero -->
+            <form action="/query" method="POST" class="query-form">
+                <input type="text" name="nl_query" placeholder="Ask QuickDocs..." required>
+                <button type="submit">Go</button>
+            </form>
+        </div>
+    </section>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+
+query.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Query Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e40af;
+        }
+        .message {
+            background: #fff8e1;
+            border-left: 5px solid #facc15;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f3f4f6;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+        tr:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ask Your Database</h1>
+
+<form method="POST">
+    <textarea name="nl_query" rows="3" placeholder="Type your question here...">{{ request.form.get('nl_query', '') }}</textarea>
+    <br>
+    <input type="submit" value="Run Query">
+</form>
+
+{% if message %}
+<div class="message">{{ message }}</div>
+{% endif %}
+
+{% if sql_query %}
+<h3>Generated SQL:</h3>
+<pre>{{ sql_query }}</pre>
+{% endif %}
+
+{% if results and results|length > 0 %}
+    <h3>Query Results</h3>
+    <table border="1">
+        <tr>
+            {% for col in results[0].keys() %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in results %}
+            <tr>
+                {% for value in row.values() %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+</body>
+</html>
+
+
+new one
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Query Interface - QuickDocs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>  
+        /* Page content */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e40af;
+        }
+        .message {
+            background: #fff8e1;
+            border-left: 5px solid #facc15;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f3f4f6;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+        tr:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <a href="/" style="text-decoration: none; color: inherit;">QuickDocs</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/register">Register</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/submit-document">Submit Document</a></li>
+    </ul>
+</nav>
+
+<h1>Ask Your Database</h1>
+
+<form method="POST">
+    <textarea name="nl_query" rows="3" placeholder="Type your question here...">{{ request.form.get('nl_query', '') }}</textarea>
+    <br>
+    <input type="submit" value="Run Query">
+</form>
+
+{% if message %}
+<div class="message">{{ message }}</div>
+{% endif %}
+
+{% if sql_query %}
+<h3>Generated SQL:</h3>
+<pre>{{ sql_query }}</pre>
+{% endif %}
+
+{% if results and results|length > 0 %}
+    <h3>Query Results</h3>
+    <table>
+        <tr>
+            {% for col in results[0].keys() %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in results %}
+            <tr>
+                {% for value in row.values() %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html>
+
+
+SELECT pa.assignment_id, c.name AS customer_name, p.name AS process_name,
+           pa.status, pa.completion_percentage,
+           COUNT(ds.submission_id) AS docs_submitted
+    FROM process_assignments pa
+    JOIN customers c ON pa.customer_id = c.customer_id
+    JOIN processes p ON pa.process_id = p.process_id
+    LEFT JOIN document_submissions ds ON pa.customer_id = ds.customer_id AND pa.process_id = ds.process_id
+    GROUP BY pa.assignment_id
+

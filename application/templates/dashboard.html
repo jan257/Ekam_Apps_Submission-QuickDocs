@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Dashboard - QuickDocs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Dashboard Table */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            color: #004aad;
+        }
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: auto;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #004aad;
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #eef5ff;
+        }
+
+        /* Status Colors */
+        .completed {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+        .in-progress {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+        }
+        .pending {
+            background-color: #f8d7da;
+            color: #721c24;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <a href="/" style="text-decoration: none; color: inherit;">QuickDocs</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/register">Register</a></li>
+        <li><a href="/submit-document">Submit Document</a></li>
+        <li><a href="/query">Query Interface</a></li>
+    </ul>
+</nav>
+
+<!-- Dashboard Table -->
+<h2>Status Dashboard</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Process</th>
+            <th>Documents Submitted</th>
+            <th>Status</th>
+            <th>Completion %</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in assignments %}
+        <tr>
+            <td>{{ a.customer_name }}</td>
+            <td>{{ a.process_name }}</td>
+            <td>{{ a.submitted_docs }}/{{ a.required_docs }}</td>
+            <td class="{{ a.status|lower|replace(' ', '-') }}">{{ a.status }}</td>
+            <td>{{ a.completion_percentage }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Footer -->
+<footer style="
+    background: linear-gradient(to right, #004aad, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-top: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+">
+    <p style="margin: 0;">
+        Made with 💻 & ☕ by <strong>Jahnavi</strong> — 
+        <em>May your queries be fast and your bugs be shallow</em>
+    </p>
+</footer>
+</body>
+</html>

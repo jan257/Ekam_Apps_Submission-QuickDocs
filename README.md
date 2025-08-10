@@ -1,4 +1,4 @@
-# Ekam Apps Assessment: QuickDocs
+# QuickDocs
 
 ## Overview
 

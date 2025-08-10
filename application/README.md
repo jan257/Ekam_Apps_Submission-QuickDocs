@@ -103,7 +103,10 @@ Screenshots of the application are available in the `application/screenshots` di
 ---
 
 ## Author: 
-Jahnavi P
+
+**Jahnavi P**  
+📍 Bangalore, India  
+🔗 [LinkedIn](https://www.linkedin.com/in/jahnavi-p-a68788233) 
 
 ---
 

@@ -1,95 +1,112 @@
-# 🃏 Card Image Classification with PyTorch
+# Ekam Apps Assessment
 
-This project is a deep learning-based image classification system for recognizing playing cards using PyTorch. Built from scratch and trained on a Kaggle playing card dataset, the model achieves 96.23% test accuracy, demonstrating robust generalization and strong feature learning.
+## Overview
+This is a web-based application developed as part of the Ekam Apps Assessment. It allows users to register, log in, upload documents, and perform natural language queries on the stored data.
 
----
-
-## 📂 Dataset
-
-- **Source**: [Kaggle Playing Cards Dataset](https://www.kaggle.com/datasets/gpiosenka/cards-image-datasetclassification) 
-- **Structure**: Images are organized in class-labeled folders (`train/<class_name>/image.jpg`, `val/<class_name>/image.jpg`)
-- **Classes**: Includes standard playing cards (e.g., "two of hearts", "king of spades", etc.)
-
----
-
-## 📊 Model Performance 
-
-After training for 5 epochs on a stratified dataset, the model reached:
-
-✅ Accuracy: 96.23%
-
-📉 Final Loss: ~0.15
-
----
-## 🔁 Training vs. Validation Loss
-
-| Epoch | Training Loss | Validation Loss | Accuracy     |
-| ----- | ------------- | --------------- | ------------ |
-| 1     | 0.55          | 0.22            | 43.2%        |
-| 2     | 0.33          | 0.15            | 65.6%        |
-| 3     | 0.25          | 0.20            | 89.9%        |
-| 4     | 0.18          | 0.15            | 92.0%        |
-| 5     | 0.15          | 0.14            | **96.23%** ✅|
-
-### 📉 Loss Curve
-![Loss over Epochs](output.png)
+## Features
+- User registration and authentication
+- Document upload and management
+- Dashboard view for managing content
+- Natural language query interface with error handling
+- Responsive front-end with HTML, CSS, and JavaScript
 
 ---
 
-## 📌 Features
+## Setup Instructions
 
-- End-to-end training pipeline using PyTorch
-- Live validation monitoring per epoch
-- GPU support (CUDA fallback to CPU)
-- Inference on individual images with softmax probability scores
-- Visual output of top 5 class predictions
-- Trained model saving and loading for future inference
-
----
-
-## ⚙️ Installation & Setup
-
-1. **Clone the repository**  
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/jan257/Card-Classifier-using-PyTorch.git
-   cd Card-Classifier-using-PyTorch
+   git clone https://github.com/jan257/Ekam_Apps_Submission-QuickDocs.git
+   cd Ekam_Apps_assessment/application
    ```
-   
-2. **Create a virtual environment (optional but recommended)**
+
+2. **Create and Activate a Virtual Environment**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # or venv\Scripts\activate on Windows
-   ```
-   
-3. **Install dependencies**
-   ```bash
-   pip install torch torchvision timm 
+   source venv/bin/activate  # On Windows use venv\Scripts\activate
    ```
 
-4. **Download and prepare dataset**
-   
-- Download the dataset from Kaggle
-- Unzip it into the root directory under /train, /val, and /test folders
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set Up the Database**
+   - Create a database using your preferred SQL database engine.
+   - Run the schema script:
+     ```bash
+     mysql -u <username> -p <database_name> < ../database/schema.sql
+     ```
+   - (Optional) Load sample data:
+     ```bash
+     mysql -u <username> -p <database_name> < ../database/sample_data.sql
+     ```
+
+5. **Configure Environment Variables**
+   - Create a `.env` file in the `application` directory.
+   - Add configuration values like:
+     ```env
+        SECRET_KEY=------------
+        DB_HOST=------------
+        DB_USER=-------------
+        DB_PASSWORD=---------
+        DB_NAME=-----------
+     ```
+
+---
+
+## How to Run the Application
+
+1. Activate your virtual environment:
+   ```bash
+   source venv/bin/activate  # On Windows use venv\Scripts\activate
+   ```
+
+2. Start the Flask application:
+- (If in root dir)
+   ```bash
+   python -m application.app.py
+   ```
+- OR
+```bash
+   cd application
+   python app.py
+```
+
+3. Open your browser and navigate to:
+   ```
+   http://127.0.0.1:5000
+   ```
+
+---
+
+## API Keys Needed
+- **Secret Key**: Required for flash sessions.
+- **Database Credentials**: Required to connect to your SQL database.
+
+*(Do not commit actual keys to version control.)*
 
 ---
 
 ## Technologies Used
-  - Python 3.10+
-  - PyTorch
-  - torchvision
-  - matplotlib
-  - PIL (Pillow)
+- **Backend**: Python, Flask
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: MySQL (or compatible SQL database)
+- **NLP**: Rule-based approach
+- **Other Tools**: Jinja2 Templates
 
 ---
-## 🤝 Acknowledgements
-- Dataset: [Kaggle Playing Cards Dataset](https://www.kaggle.com/datasets/gpiosenka/cards-image-datasetclassification) 
-- Framework: PyTorch
+
+## Screenshots
+Screenshots of the application are available in the `application/screenshots` directory.
+
 ---
 
-## 👩‍💻 Author
+## Author: 
 
 **Jahnavi P**  
 📍 Bangalore, India  
 🔗 [LinkedIn](https://www.linkedin.com/in/jahnavi-p-a68788233) 
 
 ---
+

@@ -16,7 +16,7 @@ This is a web-based application developed as part of the Ekam Apps Assessment. I
 
 1. **Clone the Repository**
    ```bash
-   git clone [<repository_url>](https://github.com/jan257/Ekam_Apps_Submission-QuickDocs.git)
+   git clone https://github.com/jan257/Ekam_Apps_Submission-QuickDocs.git
    cd Ekam_Apps_assessment/application
    ```
 

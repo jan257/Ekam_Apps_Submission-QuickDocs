@@ -46,11 +46,11 @@ This is a web-based application developed as part of the Ekam Apps Assessment. I
    - Create a `.env` file in the `application` directory.
    - Add configuration values like:
      ```env
-        SECRET_KEY=------------
-        DB_HOST=------------
-        DB_USER=-------------
-        DB_PASSWORD=---------
-        DB_NAME=-----------
+        SECRET_KEY= ____________
+        DB_HOST= ____________
+        DB_USER= ____________
+        DB_PASSWORD= ____________
+        DB_NAME= ____________
      ```
 
 ---

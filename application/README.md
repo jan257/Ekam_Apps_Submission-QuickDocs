@@ -1,17 +1,21 @@
 # Ekam Apps Assessment: QuickDocs
 
 ## Overview
-This is a web-based application developed as part of the Ekam Apps Assessment. It allows to register users, sumbit documents, track progess of processes and perform natural language queries on the stored data.
 
-## Features
-- User registration and authentication
-- Document upload and management
-- Dashboard view for managing content
-- Natural language query interface with error handling
-- Responsive front-end with HTML, CSS, and JavaScript
+QuickDocs is a Flask-powered document intelligence platform designed for streamlined workflow and smart data interaction. It allows quick user registration, efficient document handling, and Natural Language Processing (NLP) to extract insights from stored content. With a responsive interface and a scalable backend, QuickDocs is built to make document-driven processes faster, smarter, and easier to manage.
 
 ---
 
+## Features
+
+- User Registration & Assignment – Quickly add new users and link them to relevant processes.
+- Document Upload & Management – Store, organize, and access files with minimal effort.
+- Process Tracking Dashboard – Monitor workflow progress in a clear, structured view.
+- NLP-Powered Queries – Search and analyze documents using natural language commands.
+- Error-Resilient Query Handling – Smart handling of incomplete or unclear search requests.
+- Responsive UI – HTML, CSS, and JavaScript interface optimized for seamless use across devices.
+
+---
 ## Setup Instructions
 
 1. **Clone the Repository**
